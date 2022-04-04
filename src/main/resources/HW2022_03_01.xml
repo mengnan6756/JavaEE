@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--验证bean的生命周期
+    构造方法-属性注入-初始化-销毁
+
+    1.自定义初始化方法:需要在创建bean的类中创建
+         init-method
+    2.自定义销毁方法：需要在创建bean的类中创建
+         destroy-method
+-->
+
+<!--实例化-->
+    <bean id="beanLife" class="HomeWork.HW2022_03_01.BeanLife" init-method="initMyself"
+    destroy-method="destroy">
+        <property name="name" value="bean生命周期"></property>
+    </bean>
+</beans>

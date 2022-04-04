@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        ">
+
+
+<!--
+        对JDBCTemplate的运用：
+        使用该模板实现对author表的增删改查操作
+
+        更新操作：
+
+        查询查询：
+                1.查询的结果为某个值
+                2.查询的结果为对象
+                3.查询的结果为集合
+-->
+
+
+<!--    使用注解的方式创建对象
+            开启组件扫描：
+                添加命名空间：
+                xmlns:context="http://www.springframework.org/schema/context"
+                xsi:schemaLocation=http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+
+          <context:component-scan base-package="JDBCTemplate"></context:component-scan>
+
+            配置数据源对象（数据库连接词）：
+                <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                MySQL数据库驱动
+                name="driverClassName" value="com.mysql.jdbc.Driver"
+                连接数据库的URL
+                name="url" value="jdbc:mysql://localhost:3306/books"
+                连接数据库的用户名
+                name="username" value="root"
+                连接数据库的密码
+                name="password" value="xiaowei."
+
+
+            配置JDBCTemplate对象(将数据库连接池对象注入其中)：
+                <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+                注入数据源对象
+                < property name="dataSource" ref="dataSource"></property>
+                </bean>
+       -->
+
+    <!--组件扫描-->
+    <context:component-scan base-package="TeamWork"></context:component-scan>
+
+
+    <!--数据源对象-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!-- MySQL数据库驱动-->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <!-- 连接数据库的URL-->
+        <property name="url" value="jdbc:mysql://localhost:3306/books"></property>
+        <!-- 连接数据库的用户名-->
+        <property name="username" value="root"></property>
+        <!-- 连接数据库的密码-->
+        <property name="password" value="xiaowei."></property>
+    </bean>
+
+
+    <!--JDBCTemplate对象-->
+    <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--注入数据源对象-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+</beans>

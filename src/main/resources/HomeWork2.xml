@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+<!--    通过构造方法注入属性-->
+    <bean id="helloService" class="HomeWork.HW2022_02_28.Service.HelloService">
+
+        <!-- 引用外部类对象-->
+        <constructor-arg name="helloDao" ref="helloImpl"></constructor-arg>
+    </bean>
+
+
+<!--&lt;!&ndash;    通过setter方法进行属性注入&ndash;&gt;-->
+<!--    <bean id="helloService" class="HomeWork.HW2022_02_28.Service.HelloService">-->
+<!--        <property name="helloDao" ref="helloImpl"></property>-->
+<!--    </bean>-->
+
+        <!--dao实现类对象，用于被helloService对象引用-->
+    <bean id="helloImpl" class="HomeWork.HW2022_02_28.Dao.HelloDaoImpl"></bean>
+
+
+
+</beans>
